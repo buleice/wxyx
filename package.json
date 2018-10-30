@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "4",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-motion": "^0.5.2",
     "react-scripts": "2.1.0",
+    "react-transition-group": "^2.5.0",
     "reactstrap": "^6.5.0",
     "swiper": "^4.4.1"
   },

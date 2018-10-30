@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import { CSSTransitionGroup } from 'react-transition-group';
 import './buttons.css'
 
 export default class FooterButtons extends Component{
