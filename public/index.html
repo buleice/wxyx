@@ -1,40 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size:10px">
+<html lang="en" style="font-size:.83rem">
   <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <script>
+        function resetHtmlFontAndViewPort() {
+            var scale = 1 / devicePixelRatio;
+            document.querySelector('meta[name="viewport"]').setAttribute('content','initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        }
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+        function resetHtmlFont() { //改变浏览器字体大小
+            var HTML = document.getElementsByTagName('html')[0];
+            var deviceWidth = document.documentElement.clientWidth;
+            var scale2 = deviceWidth / 375;
+            var fontSize=(120 * scale2)/10>=30? 30:parseInt((120 * scale2)/10);
+            fontSize=chk(fontSize)?fontSize:fontSize+1;
+            HTML.style.fontSize = fontSize + 'px'; //乘以100的目的是浏览器最小的字体大小为1rem,所以会出现屏幕过小会不执行，这样就可以按照正常的px大小除以100就是rem的值了
+        }
+        function chk(num){
+            return num%2 ==0 ?true:false;  //判断是否能整除2
+        }
+
+        function resize() {
+            if(window.orientation == 90 || window.orientation == -90) {
+                //ipad、iphone竖屏；Andriod横屏
+                // resetHtmlFontAndViewPort()
+                resetHtmlFont()
+                orientation = 'landscape';
+                return false;
+            } else if(window.orientation == 0 || window.orientation == 180) {
+                //ipad、iphone横屏；Andriod竖屏
+                // resetHtmlFontAndViewPort()
+                resetHtmlFont()
+                orientation = 'portrait';
+                return false;
+            }
+        }
+        //window.addEventListener("orientationchange",function(){//手机横屏或者竖屏事件
+        // resize();
+        //});
+        window.onresize = window.onorientationchange = function() {
+            resize();
+            resetHtmlFont()
+        }
+        resize();
+        resetHtmlFont();
+    </script>
     <title>小伴龙优学</title>
   </head>
+
   <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 </html>

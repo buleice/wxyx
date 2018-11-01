@@ -7,7 +7,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-li{list-style-type: none;}
+*{list-style-type: none;text-decoration: none}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
