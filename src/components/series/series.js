@@ -29,7 +29,7 @@ export default class Series extends Component{
                                 <div className="course-other">
                                     <div>
                                         <b>{goods.title}</b>
-                                        <div className="pintuanjia">系列购价格：<span className="rmb">￥</span><span className="rmb-price">{goods.price}</span></div>
+                                        <div className="pintuanjia">系列购价格:<span className={`rmb ${goods.haveBuy===1? 'line-through':''}`} >￥</span><span className={`rmb-price ${goods.haveBuy===1? 'line-through':''}`}>{goods.price}</span></div>
                                     </div>
                                     {goods.haveBuy===0? (<div><img className="course-buyStatus" src="//udata.youban.com/webimg/wxyx/puintuan/hasbuy.png" alt=""/></div>):(<div><span className="hasBought">已购买</span></div>) }
                                 </div>

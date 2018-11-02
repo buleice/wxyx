@@ -46,8 +46,10 @@ class App extends Component {
                         seriesid:res.data.seriesInfo._id.$oid,
                         urltag:'wxyx_groupbuying_series',
                         shareKey:this._GetQueryString('shareKey'),
-                        Fprice:res.data.buyPrice,
-                        count:res.data.seriesInfo.FgoodsList.length
+                        Fprice:res.data.seriesInfo.Fprice,
+                        count:res.data.notBuyCount,
+                        origPrice:res.data.origPrice,
+                        buyPrice:res.data.buyPrice,
                     },
                     shareData:{
                         FshareTitle:res.data.seriesInfo.FshareTitle,
@@ -62,43 +64,47 @@ class App extends Component {
                         Fsubtitle:res.data.seriesInfo.Fsubtitle,
                         Ftitle:res.data.seriesInfo.Ftitle,
                         origPrice:res.data.origPrice,
-                        buyPrice:res.data.seriesPrice,
-                        Fsales:res.data.seriesInfo.Fsales
-
-                    }
+                        buyPrice:res.data.buyPrice,
+                        Fsales:res.data.seriesInfo.Fsales,
+                    },
+                    idAndShareKey:{
+                        id:this._GetQueryString("id"),
+                        shareKey:res.data.myShareKey,
+                    },
+                    hasBonus:res.data.canGetBonus
                 });
                 jsSdkConfig(this.state.shareData);
             }
         })
     }
     render() {
-    if(this.state.loading){
-        return (
-            <div className="App">
-                <Swipers lists={this.state.seriesInfo.Fbanner}/>
-                <GoodInfo goodInfo={this.state.goodInfo} />
-                <CourserContainer courseLists={this.state.seriesInfo.FgoodsList}/>
-                <ProductsInfo Fintros={this.state.Fintros}/>
-                <Series save={this.state.save} FgoodsList={this.state.seriesInfo.FgoodsList} show={this.state.show} changeParentStatus={this.changeParentStatus.bind(this)}/>
-                <FooterButtons allBuy={this.state.allBuy} buyingInfo={this.state.buyingInfo} changeStatus={this.changeStatus.bind(this)}/>
-            </div>
-        );
-    }else{
-        return (<div className="loading-mask" id="loadingDiv">
-            <div className="loader">
-                <div className="square"></div>
-                <div className="square"></div>
-                <div className="square last"></div>
-                <div className="square clear"></div>
-                <div className="square"></div>
-                <div className="square last"></div>
-                <div className="square clear"></div>
-                <div className="square "></div>
-                <div className="square last"></div>
-            </div>
-        </div>)
+        if(this.state.loading){
+            return (
+                <div className="App">
+                    <Swipers hasBonus={this.state.hasBonus} idAndShareKey={this.state.idAndShareKey}  lists={this.state.seriesInfo.Fbanner}/>
+                    <GoodInfo goodInfo={this.state.goodInfo}  Fsales={this.state.seriesInfo.Fsales}/>
+                    <CourserContainer courseLists={this.state.seriesInfo.FgoodsList}/>
+                    <ProductsInfo Fintros={this.state.Fintros}/>
+                    <Series save={this.state.save} FgoodsList={this.state.seriesInfo.FgoodsList} show={this.state.show} changeParentStatus={this.changeParentStatus.bind(this)}/>
+                    <FooterButtons allBuy={this.state.allBuy} buyingInfo={this.state.buyingInfo} changeStatus={this.changeStatus.bind(this)}/>
+                </div>
+            );
+        }else{
+            return (<div className="loading-mask" id="loadingDiv">
+                <div className="loader">
+                    <div className="square"></div>
+                    <div className="square"></div>
+                    <div className="square last"></div>
+                    <div className="square clear"></div>
+                    <div className="square"></div>
+                    <div className="square last"></div>
+                    <div className="square clear"></div>
+                    <div className="square "></div>
+                    <div className="square last"></div>
+                </div>
+            </div>)
+        }
     }
-  }
     _GetQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg); //search,查询？后面的参数，并匹配正则

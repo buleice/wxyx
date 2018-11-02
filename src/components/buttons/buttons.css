@@ -50,3 +50,5 @@
     top: -1.33rem;
 
 }
+.showAlert{display: block;position: fixed;top: 100%;height: 100%;z-index: 1000}
+.hideAlert{display: none;position: fixed;top: 100%;height: 100%;z-index: 1000}

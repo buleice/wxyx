@@ -95,7 +95,7 @@ const wxPay=function (url,data) {
         }
     }).then(response=>{
         if(response.status===200){
-            jsSDK(response.data.data);
+             jsSDK(response.data.data);
         }
     }).catch(function (errors) {
         console.log('errors', errors);
@@ -122,9 +122,9 @@ const onBridgeReady=function (params) {
         function(res) {
             if (res.err_msg === "get_brand_wcpay_request:ok") {
                 alert("支付成功");
+                window.location.reload()
             } else {
-                alert("亲，您没有支付成功");
-                window.location.reload();
+                alert("支付失败");
             }
         }
     );
