@@ -13,7 +13,11 @@ export default class CourserContainer extends Component{
             <div className="course-contatiner">
                 <div className="courseLabel">本系列包含课程</div>
                <ul>
-                   {this.state.courseLists.map((list,index)=><li key={index}><a href={`/purchase/index?id=${list.id}`} ><img src={list.img} alt="图片"/></a></li>)}
+                   {this.state.courseLists.map((list,index)=><li key={index}><a href={`/purchase/index?id=${list.id}`} ><img src={list.img} alt="图片"/>
+                       {list.haveBuy===1?(<span className='buyStatus'><img className='course-buyStatus'
+                           src="//udata.youban.com/webimg/wxyx/puintuan/hasBuy.svg" alt=""/>已购</span>):(<span className='buyStatus'><img className='course-buyStatus'
+                           src="//udata.youban.com/webimg/wxyx/puintuan/hasbuy.png" alt=""/>未购</span>)}
+                   </a></li>)}
                </ul>
             </div>
         )

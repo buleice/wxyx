@@ -46,37 +46,41 @@ class App extends Component {
                         seriesid:res.data.seriesInfo._id.$oid,
                         urltag:'wxyx_groupbuying_series',
                         shareKey:this._GetQueryString('shareKey'),
-                        Fprice:res.data.seriesInfo.Fprice,
+                        Fprice:res.data.buyPrice,
                         count:res.data.seriesInfo.FgoodsList.length
                     },
                     shareData:{
-                        FshareTitle:res.data.myShareKey.FshareTitle,
-                        FshareIcon:res.data.myShareKey.FshareIcon,
-                        FshareContent:res.data.myShareKey.FshareContent,
+                        FshareTitle:res.data.seriesInfo.FshareTitle,
+                        FshareIcon:res.data.seriesInfo.FshareIcon,
+                        FshareContent:res.data.seriesInfo.FshareContent,
                         myShareKey:res.data.myShareKey,
                         buyingId:this._GetQueryString("id")
                     },
-                    save:res.data.save
+                    save:res.data.save,
+                    allBuy:res.data.allBuy,
+                    goodInfo:{
+                        Fsubtitle:res.data.seriesInfo.Fsubtitle,
+                        Ftitle:res.data.seriesInfo.Ftitle,
+                        origPrice:res.data.origPrice,
+                        buyPrice:res.data.seriesPrice,
+                        Fsales:res.data.seriesInfo.Fsales
 
+                    }
                 });
-                // console.log(this.state)
+                jsSdkConfig(this.state.shareData);
             }
         })
-    }
-    componentDidMount() {
-        // console.log(this.state)
-        jsSdkConfig(this.state.shareData);
     }
     render() {
     if(this.state.loading){
         return (
             <div className="App">
                 <Swipers lists={this.state.seriesInfo.Fbanner}/>
-                <GoodInfo/>
+                <GoodInfo goodInfo={this.state.goodInfo} />
                 <CourserContainer courseLists={this.state.seriesInfo.FgoodsList}/>
                 <ProductsInfo Fintros={this.state.Fintros}/>
                 <Series save={this.state.save} FgoodsList={this.state.seriesInfo.FgoodsList} show={this.state.show} changeParentStatus={this.changeParentStatus.bind(this)}/>
-                <FooterButtons buyingInfo={this.state.buyingInfo} changeStatus={this.changeStatus.bind(this)}/>
+                <FooterButtons allBuy={this.state.allBuy} buyingInfo={this.state.buyingInfo} changeStatus={this.changeStatus.bind(this)}/>
             </div>
         );
     }else{
