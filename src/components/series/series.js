@@ -16,7 +16,7 @@ export default class Series extends Component{
     render(){
         return(
             <div>
-                <div className={`weui_mask ${this.props.show?"show_mask":"hide_mask"}`}></div>
+                <div onClick={this.props.changeParentStatus} className={`weui_mask ${this.props.show?"show_mask":"hide_mask"}`}></div>
                 <div className={`series-container ${this.props.show? "show" : "hide" }`} >
                     <div className="header">
                         {this.props.save>0 && (<span className="title">系列课程可节省：￥{this.props.save}</span>)}

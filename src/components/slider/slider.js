@@ -27,21 +27,6 @@ export default class Swipers extends Component{
       });
   }
   render(){
-      if(this.props.hasBonus===1){
-          return(
-              <div className="banbox">
-                  <div className="wxchat-banner swiper-container">
-                      <section className="new_custom swiper-container index_tab_con" ref={self => this.swiperID = self}>
-                          <ul className="swiper-wrapper">
-                              {this.props.lists.map((list,index)=><li className="swiper-slide" key={index}><img className="swiper-img" src={list} alt="图片"/></li>)}
-                          </ul>
-                          <div className="swiper-pagination banner-pagination" ref={self => this.paginateID = self}></div>
-                      </section>
-                  </div>
-                  <a href={`/groupbuying/poster?shareKey=${this.props.idAndShareKey.shareKey}&id=${this.props.idAndShareKey.id}`} className='bonus_entry'><img src="//udata.youban.com/webimg/wxyx/puintuan/bonus.gif" alt="奖学金"/></a>
-              </div>
-          )
-      }else{
           return(
               <div className="banbox">
                   <div className="wxchat-banner swiper-container">
@@ -54,6 +39,6 @@ export default class Swipers extends Component{
                   </div>
               </div>
           )
-      }
+
   }
 }

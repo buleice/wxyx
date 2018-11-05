@@ -6,6 +6,7 @@ import FooterButtons  from './components/buttons/buttons'
 import ProductsInfo from './components/products-introduction/products-introduction'
 import Series from'./components/series/series'
 import GoodInfo from './components/goodInfo/goodInfo'
+import ScroolYToTop from './components/toTop/totop';
 import axios from 'axios';
 import {ROOT,DEBUG} from './components/common/js/url-config';
 import {jsSdkConfig} from './components/common/js/jsSdk'
@@ -81,12 +82,13 @@ class App extends Component {
         if(this.state.loading){
             return (
                 <div className="App">
-                    <Swipers hasBonus={this.state.hasBonus} idAndShareKey={this.state.idAndShareKey}  lists={this.state.seriesInfo.Fbanner}/>
-                    <GoodInfo goodInfo={this.state.goodInfo}  Fsales={this.state.seriesInfo.Fsales}/>
+                    <Swipers  lists={this.state.seriesInfo.Fbanner}/>
+                    <GoodInfo hasBonus={this.state.hasBonus} idAndShareKey={this.state.idAndShareKey} goodInfo={this.state.goodInfo}  Fsales={this.state.seriesInfo.Fsales}/>
                     <CourserContainer courseLists={this.state.seriesInfo.FgoodsList}/>
                     <ProductsInfo Fintros={this.state.Fintros}/>
                     <Series save={this.state.save} FgoodsList={this.state.seriesInfo.FgoodsList} show={this.state.show} changeParentStatus={this.changeParentStatus.bind(this)}/>
                     <FooterButtons allBuy={this.state.allBuy} buyingInfo={this.state.buyingInfo} changeStatus={this.changeStatus.bind(this)}/>
+                    <ScroolYToTop/>
                 </div>
             );
         }else{

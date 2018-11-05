@@ -3,7 +3,6 @@ const axios =require('axios');
 const Config =require('./url-config')
 axios.defaults.withCredentials=true;
 const jsSdkConfig = function (shareData) {
-    console.log(shareData)
     let WXSHDATA = {
         title: shareData.FshareTitle,
         link:`${window.location.href.split("?")[0]}?id=${shareData.buyingId}&shareKey=${shareData.myShareKey}`,
@@ -50,7 +49,6 @@ const jsSdkConfig = function (shareData) {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     }).then(function (response) {
-        console.log(response)
         if (response.status === 200) {
             let data=response.data;
             window.wx.config({
@@ -134,4 +132,3 @@ export {
     jsSdkConfig,
     wxPay
 }
-

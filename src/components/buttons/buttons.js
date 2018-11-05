@@ -33,7 +33,6 @@ export default class FooterButtons extends Component {
                 </ul>
                 ):
                 (<a href="/shop/index?source=mine" className="shangKe">去上课</a>)}
-
                 <div className="js_dialog" className={this.state.isalert ? "showAlert" : "hideAlert"}>
                     <div className="weui-mask"></div>
                     <div className="weui-dialog">

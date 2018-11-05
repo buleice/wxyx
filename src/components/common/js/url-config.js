@@ -10,5 +10,5 @@ if (process.env.NODE_ENV === 'development') {
     debug=''
 }
 exports.PROXYROOT = ''; //代理指向地址
-exports.ROOT = '';
-exports.DEBUG = '';
+exports.ROOT = ROOT;
+exports.DEBUG = debug;

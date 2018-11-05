@@ -18,6 +18,7 @@ export default class GoodInfo extends Component{
                         className="sup">现价</span></span>
                     <span className="originprice"><span>原价</span><del className="del">￥{this.props.goodInfo.origPrice}</del></span> <span id="tag">已有{this.props.goodInfo.Fsales}人购买</span>
                 </div>
+                <a href={`/groupbuying/poster?shareKey=${this.props.idAndShareKey.shareKey}&id=${this.props.idAndShareKey.id}`} className='bonus_entry'><img src="//udata.youban.com/webimg/wxyx/puintuan/bonus.gif" alt="奖学金"/></a>
             </div>
         )
     }
