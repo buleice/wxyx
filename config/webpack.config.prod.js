@@ -21,7 +21,7 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -344,21 +344,32 @@ module.exports = {
           // `MiniCSSExtractPlugin` extracts styles into CSS
           // files. If you use code splitting, async bundles will have their own separate CSS chunk file.
           // By default we support CSS Modules with the extension .module.css
-          {
-            test: cssRegex,
-            exclude: cssModuleRegex,
-            loader: getStyleLoaders({
-              importLoaders: 1,
-              sourceMap: shouldUseSourceMap,
-            }),
-            // Don't consider CSS imports dead code even if the
-            // containing package claims to have no side effects.
-            // Remove this when webpack adds a warning or an error for this.
-            // See https://github.com/webpack/webpack/issues/6571
-            sideEffects: true,
-          },
+
+          // {
+          //   test: cssRegex,
+          //   exclude: cssModuleRegex,
+          //   loader: getStyleLoaders({
+          //     importLoaders: 1,
+          //     sourceMap: shouldUseSourceMap,
+          //   }),
+          //   // Don't consider CSS imports dead code even if the
+          //   // containing package claims to have no side effects.
+          //   // Remove this when webpack adds a warning or an error for this.
+          //   // See https://github.com/webpack/webpack/issues/6571
+          //   sideEffects: true,
+          // },
           // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
           // using the extension .module.css
+
+
+          {
+          test: /\.css$/,
+          loader: ExtractTextPlugin({
+            notExtractLoader: 'style-loader',
+            loader: 'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base4:5]!resolve-url!postcss'
+          })
+        },
+
           {
             test: cssModuleRegex,
             loader: getStyleLoaders({
@@ -426,6 +437,10 @@ module.exports = {
   },
   plugins: [
     // Generates an `index.html` file with the <script> injected.
+    new ExtractTextPlugin({
+     filename: 'app.css',
+     allChunks: true
+   }),
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
