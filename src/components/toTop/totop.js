@@ -1,7 +1,23 @@
 import React,{Component} from 'react';
+import { connect } from 'react-redux'
+import * as actionCreators from '../../redux/action'
 import './toTop.css'
 
-export default class ScrollToTop extends Component{
+const mapStateToProps=(state,ownProps)=>{
+  return {
+    testName:state.user,
+  }
+}
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     onTodoClick: id => {
+//       dispatch(toggleTodo(id))
+//     }
+//   }
+// }
+
+ class ScrollTo extends Component{
   constructor(props){
     super(props);
     this. _throttle=this. _throttle.bind(this)
@@ -46,6 +62,8 @@ export default class ScrollToTop extends Component{
         }
     }
     _topFunction() {
+          // console.log(this.props)
+          // this.props.dispatch(actionCreators.setNameActionCreator("dylan"))
         let _this=this
         cancelAnimationFrame(this.timer);
         this.timer = requestAnimationFrame(function fn() {
@@ -59,3 +77,6 @@ export default class ScrollToTop extends Component{
         });
     }
 }
+const ScrollToTop =connect(mapStateToProps)(ScrollTo)
+
+export default ScrollToTop
