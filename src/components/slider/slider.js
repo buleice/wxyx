@@ -5,9 +5,7 @@ import 'swiper/dist/css/swiper.min.css'
 // import Danmaku from '../../components/Danmaku/Danmaku'
 
 export default class Swipers extends Component{
-  // constructor(props){
-  //   super(props);
-  // }
+
   componentDidMount() {
       new Swiper(this.swiperID, {
           pagination: {

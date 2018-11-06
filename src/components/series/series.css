@@ -64,8 +64,8 @@
 .single-course .course-buyStatus{width: 2.5rem;margin-right: 3rem;}
 .hasBought{width: auto;height: 2.17rem;padding:0 .5rem; line-height: 2.17rem;text-align: center;border-radius: 1.08rem;
     border: 1px solid #767676;font-size: 1.17rem}
-.show{transform: translateY(0);transition:transform 0.5s }
-.hide{transform: translateY(100%);transition:transform 0.5s}
+.show-list{transform: translateY(0);transition:transform 0.5s }
+.hide-list{transform: translateY(100%);transition:transform 0.5s}
 @keyframes showSeries {
     form {
         transform: translateY(100%);

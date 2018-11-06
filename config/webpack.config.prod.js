@@ -21,8 +21,6 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -420,14 +418,6 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
-          {
-            test: /\.css$/,
-            loader: ExtractTextPlugin({
-              notExtractLoader: 'style-loader',
-              loader: 'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base4:5]!resolve-url!postcss'
-            })
-          },
-
           // ** STOP ** Are you adding a new loader?
           // Make sure to add the new loader(s) before the "file" loader.
         ],
@@ -436,11 +426,6 @@ module.exports = {
   },
   plugins: [
     // Generates an `index.html` file with the <script> injected.
-    new ExtractTextPlugin({
-       filename: 'app.css',
-       allChunks: true
-     }),
-
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,

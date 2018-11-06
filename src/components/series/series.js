@@ -1,13 +1,9 @@
 import React, {Component} from 'react'
-import './series.css'
+import CSSModules from 'react-css-modules';
 
-export default class Series extends Component{
-    // constructor(props){
-    //     super(props);
-    //     this.state={
-    //         show:false
-    //     }
-    // }
+import styles from './series.css'
+
+class Series extends Component{
     changeShowStatus(){
         this.setState({
             show:false
@@ -17,7 +13,7 @@ export default class Series extends Component{
         return(
             <div>
                 <div onClick={this.props.changeParentStatus} className={`weui_mask ${this.props.show?"show_mask":"hide_mask"}`}></div>
-                <div className={`series-container ${this.props.show? "show" : "hide" }`} >
+                <div className={`series-container ${this.props.show? "show-list" : "hide-list" }`} >
                     <div className="header">
                         {this.props.save>0 && (<span className="title">系列课程可节省：￥{this.props.save}</span>)}
                         <img src="//wxyx.youban.com/img/delete.png" onClick={this.props.changeParentStatus} id="close-button-t"/>
@@ -41,3 +37,5 @@ export default class Series extends Component{
         )
     }
 }
+
+export default CSSModules(Series, styles);
