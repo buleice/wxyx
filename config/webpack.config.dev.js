@@ -273,7 +273,6 @@ module.exports = {
           // In production, we use a plugin to extract that CSS to a file, but
           // in development "style" loader enables hot editing of CSS.
           // By default we support CSS Modules with the extension .module.css
-
           {
             test: cssRegex,
             exclude: cssModuleRegex,
@@ -281,24 +280,15 @@ module.exports = {
               importLoaders: 1,
             }),
           },
-
           // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
           // using the extension .module.css
-          // {
-          //   test: cssModuleRegex,
-          //   use: getStyleLoaders({
-          //     importLoaders: 1,
-          //     modules: true,
-          //     getLocalIdent: getCSSModuleLocalIdent,
-          //   }),
-          // },
-
           {
-          test: /\.css$/,
-          loaders: [
-            'style?sourceMap',
-            'css?modues&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
-          ]
+            test: cssModuleRegex,
+            use: getStyleLoaders({
+              importLoaders: 1,
+              modules: true,
+              getLocalIdent: getCSSModuleLocalIdent,
+            }),
           },
           // Opt-in support for SASS (using .scss or .sass extensions).
           // Chains the sass-loader with the css-loader and the style-loader
