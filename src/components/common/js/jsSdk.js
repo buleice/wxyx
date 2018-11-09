@@ -76,7 +76,6 @@ const jsSdkConfig = function (shareData) {
     });
 };
 const wxPay=function (url,data) {
-    console.log("拉起支付")
     axios({
         url: url,
         method: 'post',

@@ -20,7 +20,8 @@
     height: auto;
     position: absolute;
     right: 0;
-    top: 0rem;
+    top: 3rem;
     z-index: 15;
 }
 .bonus_entry img{width: 6rem}
+.price-hidden{display: none;}
