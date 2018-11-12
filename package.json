@@ -128,5 +128,6 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+"proxy": "http://dylan.wxyx.youban.com"
 }

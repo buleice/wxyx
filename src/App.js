@@ -38,7 +38,7 @@ class App extends Component {
         })
     }
     componentWillMount(){
-        axios.get(`${ROOT}/purchase/series.json?id=${this._GetQueryString("id")}&debug=${DEBUG}`).then(res=>{
+        axios.get(`${ROOT}/purchase/series.json?id=${this._GetQueryString("id")}`).then(res=>{
             if(res.status===200){
                 this.setState({
                     seriesInfo: res.data.seriesInfo,
