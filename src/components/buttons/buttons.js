@@ -54,6 +54,7 @@ export default class FooterButtons extends Component {
 
     pullUpToPay() {
         wxPay(`${ROOT}/pay/weixin/series/prepare.json`, this.props.buyingInfo);
+        window.MtaH5.clickStat("pay_series",{"p":this.props.buyingInfo.buyPrice})
         // if (!payStatus) {
         //     this.setState({
         //         isalert: true,
