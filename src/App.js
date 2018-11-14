@@ -9,12 +9,13 @@ import GoodInfo from './components/goodInfo/goodInfo'
 import ScroolYToTop from './components/toTop/totop';
 import axios from 'axios';
 import {ROOT,DEBUG} from './components/common/js/url-config';
+import Carousel from './components/betterScroll/betterScroll'
 import {jsSdkConfig} from './components/common/js/jsSdk'
 
 
 class App extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props);
         this.state={
             show:false,
             Fintros:[],
@@ -83,6 +84,7 @@ class App extends Component {
         if(this.state.loading){
             return (
                 <div className="App">
+                    <Carousel/>
                     <Swipers  lists={this.state.seriesInfo.Fbanner}/>
                     <GoodInfo hasBonus={this.state.hasBonus} idAndShareKey={this.state.idAndShareKey} goodInfo={this.state.goodInfo}  Fsales={this.state.seriesInfo.Fsales}/>
                     <CourserContainer courseLists={this.state.seriesInfo.FgoodsList}/>
