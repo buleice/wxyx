@@ -28,20 +28,20 @@
     position: absolute;
     right: 0;
     left: 0;
-    bottom: 12px;
+    bottom: 1rem;
     transform: translateZ(1px);
     text-align: center;
     font-size: 0;
     .dot {
       display: inline-block;
-      margin: 0 4px;
-      width: 8px;
-      height: 8px;
+      margin: 0 .33rem;
+      width: .67rem;
+      height: .67rem;
       border-radius: 50%;
       background: white;
       &.active {
-        width: 20px;
-        border-radius: 5px;
+        width: 1.67rem;
+        border-radius: .42rem;
         background: lightgray;
       }
     }

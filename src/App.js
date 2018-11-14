@@ -82,9 +82,10 @@ class App extends Component {
     }
     render() {
         if(this.state.loading){
+            const carouselEl=<div><a><img src="http://cliveimages.youban.com/20181108/6394192300Fj2daclE-I9EHfFIMufA3AWwmgTO.jpg"/></a><a><img src="http://cliveimages.youban.com/20181108/6394192300Fj2daclE-I9EHfFIMufA3AWwmgTO.jpg"/></a></div>;
             return (
                 <div className="App">
-                    <Carousel/>
+                    {/*<Carousel/>*/}
                     <Swipers  lists={this.state.seriesInfo.Fbanner}/>
                     <GoodInfo hasBonus={this.state.hasBonus} idAndShareKey={this.state.idAndShareKey} goodInfo={this.state.goodInfo}  Fsales={this.state.seriesInfo.Fsales}/>
                     <CourserContainer courseLists={this.state.seriesInfo.FgoodsList}/>
