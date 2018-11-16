@@ -23,7 +23,9 @@
     background-color: #fff;
 }
 .buttons li:last-child{
-    background-color: #ff9f00;
+    background-color: #fa4420;
+    font-size:1.5rem;
+
 }
 .buttons li:first-child{box-sizing: border-box;padding: 0 .83rem;display: flex;justify-content: space-between}
 .lists{height:100%; display: flex;align-items: center}
