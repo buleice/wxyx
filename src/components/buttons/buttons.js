@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {ROOT} from '../common/js/url-config';
-// import { CSSTransitionGroup } from 'react-transition-group';
 import './buttons.css'
 import '../common/css/weui.min.css'
 import inventory from '../../asserts/inventory.png'
@@ -54,16 +53,5 @@ export default class FooterButtons extends Component {
     pullUpToPay() {
         wxPay(`${ROOT}/pay/weixin/series/prepare.json`, this.props.buyingInfo);
         window.MtaH5.clickStat("pay_series",{"p":this.props.buyingInfo.buyPrice})
-        // if (!payStatus) {
-        //     this.setState({
-        //         isalert: true,
-        //         alertContent: "支付失败"
-        //     })
-        // } else if(payStatus) {
-        //     this.setState({
-        //         isalert: true,
-        //         alertContent: "支付成功"
-        //     })
-        // }
     }
 }

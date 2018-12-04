@@ -8,8 +8,7 @@ import Series from'./components/series/series'
 import GoodInfo from './components/goodInfo/goodInfo'
 import ScroolYToTop from './components/toTop/totop';
 import axios from 'axios';
-import {ROOT,DEBUG} from './components/common/js/url-config';
-import Carousel from './components/betterScroll/betterScroll'
+import {ROOT} from './components/common/js/url-config';
 import {jsSdkConfig} from './components/common/js/jsSdk'
 
 
@@ -84,7 +83,7 @@ class App extends Component {
         if(this.state.loading){
             return (
                 <div className="App">
-                    <Swipers  lists={this.state.seriesInfo.Fbanner}/>
+                    {this.state.seriesInfo.Fbanner.length>1?(<Swipers  lists={this.state.seriesInfo.Fbanner}/>):(<div className="single-banner"><img src={this.state.seriesInfo.Fbanner[0]} alt="课程图片"/></div>)}
                     <GoodInfo hasBonus={this.state.hasBonus} idAndShareKey={this.state.idAndShareKey} goodInfo={this.state.goodInfo}  Fsales={this.state.seriesInfo.Fsales}/>
                     <CourserContainer courseLists={this.state.seriesInfo.FgoodsList}/>
                     <ProductsInfo Fintros={this.state.Fintros}/>
