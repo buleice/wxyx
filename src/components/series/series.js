@@ -1,33 +1,85 @@
 import React, {Component} from 'react'
 import CSSModules from 'react-css-modules';
-
+import timeIcon from '../../asserts/课时(1).png';
+import peopleIcon from '../../asserts/人物拷贝.png';
+import catalogueIcon from '../../asserts/目录.png'
 import styles from './series.css'
+import {setCarts} from "../../actions";
 
-class Series extends Component{
-    changeShowStatus(){
+class Series extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            usercart:new Set()
+        }
+    }
+    componentDidMount(){
+        let tempArr=[]
+        let filterList=this.props.FgoodsList.filter((item,index)=>{
+            return item.haveBuy==0;
+        })
+        filterList.map(item=>{
+            tempArr.push(item.id);
+        })
         this.setState({
-            show:false
+            usercart:new Set(tempArr)
         })
     }
-    render(){
-        return(
+    handleCart(courseId){
+        // this.props.onSetCarts("")
+        let usercart=this.state.usercart;
+        if(usercart.size>0){
+            if(usercart.has(courseId)){
+                usercart.delete(courseId)
+                this.setState({
+                    carts:usercart
+                })
+                // this.props.onSetCarts(usercart)
+            }else {
+                usercart.add(courseId)
+                this.setState({
+                    carts:usercart
+                })
+                // this.props.setCarts(carts)
+            }
+        }else{
+            this.setState({
+                carts:new Set().add(courseId)
+            })
+            // this.props.setCarts(new Set().add(courseId))
+        }
+    }
+
+    render() {
+        return (
             <div>
-                <div onClick={this.props.changeParentStatus} className={`weui_mask ${this.props.show?"show_mask":"hide_mask"}`}></div>
-                <div className={`series-container ${this.props.show? "show-list" : "hide-list" }`} >
+                <hr className="divide"/>
+                <div className="series-container">
                     <div className="header">
-                        {this.props.save>0 && (<span className="title">系列课程可节省：￥{this.props.save}</span>)}
-                        <img src="//wxyx.youban.com/img/delete.png" onClick={this.props.changeParentStatus} id="close-button-t"/>
+                        <img src={catalogueIcon} alt=""/>
+                        <span className="title">系列内容</span>
                     </div>
                     <ul className="series-body">
                         {
-                            this.props.FgoodsList.map((goods,index)=><li className="single-course" key={index}>
+                            this.props.FgoodsList.map((goods, index) => <li className="single-course" key={index}>
                                 <img className="course-img" src={goods.img} alt="图片"/>
                                 <div className="course-other">
                                     <div>
                                         <b>{goods.title}</b>
-                                        <div className="pintuanjia">系列购价格:<span className={`rmb ${goods.haveBuy===1? 'line-through':''}`} >￥</span><span className={`rmb-price ${goods.haveBuy===1? 'line-through':''}`}>{goods.price}</span></div>
+                                        <div className="course-info"><img src={timeIcon} alt=""/><span>共{goods.number}课时</span><img src={peopleIcon} alt=""/><span>1234</span></div>
                                     </div>
-                                    {goods.haveBuy===0? (<div><img className="course-buyStatus" src="//udata.youban.com/webimg/wxyx/puintuan/hasbuy.png" alt=""/></div>):(<div><span className="hasBought">已购买</span></div>) }
+                                    {
+                                        goods.haveBuy === 0 ?
+                                        (<div>
+                                                <input type="checkbox"  defaultChecked className="checkbox" id={`checkbox${index}`}/>
+                                                <label htmlFor={`checkbox${index}`} onClick={this.handleCart.bind(this,goods.id)} className='cb-label'></label>
+                                            </div>
+                                        )
+                                        :
+                                        (
+                                            <div><span className="hasBought">已购买</span></div>
+                                        )
+                                    }
                                 </div>
                             </li>)
                         }

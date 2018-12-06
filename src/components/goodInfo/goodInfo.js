@@ -1,19 +1,30 @@
 import React,{Component} from 'react'
-import './goodInfo.css'
+import './goodInfo.css';
+import peopleIcon from '../../asserts/人物拷贝.png';
+import numberIcon from '../../asserts/数量榜.png';
+import tagIcon from '../../asserts/标签.png'
 export default class GoodInfo extends Component{
     render(){
+        let {Number,Fsales,buyPrice,origPrice,tag,Ftitle,Fsubtitle}=this.props.goodInfo;
+        tag='英语/数学'
         return(
             <div className="sad-banner">
                 <div className="title">
-                    <span><span dangerouslySetInnerHTML={{__html:this.props.goodInfo.Ftitle}}></span></span>
+                    <span><span dangerouslySetInnerHTML={{__html:Ftitle}}></span></span>
                 </div>
                 <div>
-                    <p dangerouslySetInnerHTML={{__html:this.props.goodInfo.Fsubtitle}}></p></div>
-                <div className="goodInfo-div">
-                    <span   className={`price ${this.props.goodInfo.buyPrice===0? 'price-hidden':''}`}>￥<strong>{this.props.goodInfo.buyPrice}</strong><span
-                        className="sup">现价</span></span>
-                    <span className="originprice"><span>原价</span><del className="del">￥{this.props.goodInfo.origPrice}</del></span> <span id="tag">已有{this.props.goodInfo.Fsales}人购买</span>
-                </div>
+                    <p dangerouslySetInnerHTML={{__html:Fsubtitle}}></p></div>
+                <ul className="goodInfo-div">
+                    <li className={'labels'}>
+                        <img src={numberIcon} alt=""/><span>{Number}</span>
+                        <img src={peopleIcon} alt=""/><span>{Fsales}</span>
+                        <img src={tagIcon} alt=""/>{tag.split('/').map((item,index)=><span key={index}>{item}</span>)}
+                    </li>
+                    <li className={'prices'}>
+                        <span className="originprice"><del className="del">￥{origPrice}</del></span>
+                        <span   className={`price ${this.props.goodInfo.buyPrice===0? 'price-hidden':''}`}>￥<strong>{buyPrice}</strong></span>
+                    </li>
+                </ul>
                 {this.props.hasBonus===1&&<a href={`/groupbuying/poster?shareKey=${this.props.idAndShareKey.shareKey}&id=${this.props.idAndShareKey.id}`} className='bonus_entry'><img src="//udata.youban.com/webimg/wxyx/puintuan/bonus.gif" alt="奖学金"/></a>}
 
             </div>

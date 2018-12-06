@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import Swipers from './components/slider/slider'
-import CourserContainer from './components/container/container'
-import FooterButtons  from './components/buttons/buttons'
+// import CourserContainer from './components/container/container'
+import FooterButtons  from './container/buttons'
 import ProductsInfo from './components/products-introduction/products-introduction'
-import Series from'./components/series/series'
+import Series from'./container/series'
 import GoodInfo from './components/goodInfo/goodInfo'
 import ScroolYToTop from './components/toTop/totop';
 import axios from 'axios';
@@ -68,6 +68,8 @@ class App extends Component {
                         origPrice:res.data.origPrice,
                         buyPrice:res.data.buyPrice,
                         Fsales:res.data.seriesInfo.Fsales,
+                        Number:res.data.seriesInfo.FgoodsList.length,
+                        tag:res.data.tags,
                     },
                     idAndShareKey:{
                         id:this._GetQueryString("id"),
@@ -85,9 +87,8 @@ class App extends Component {
                 <div className="App">
                     {this.state.seriesInfo.Fbanner.length>1?(<Swipers  lists={this.state.seriesInfo.Fbanner}/>):(<div className="single-banner"><img src={this.state.seriesInfo.Fbanner[0]} alt="课程图片"/></div>)}
                     <GoodInfo hasBonus={this.state.hasBonus} idAndShareKey={this.state.idAndShareKey} goodInfo={this.state.goodInfo}  Fsales={this.state.seriesInfo.Fsales}/>
-                    <CourserContainer courseLists={this.state.seriesInfo.FgoodsList}/>
-                    <ProductsInfo Fintros={this.state.Fintros}/>
                     <Series save={this.state.save} FgoodsList={this.state.seriesInfo.FgoodsList} show={this.state.show} changeParentStatus={this.changeParentStatus.bind(this)}/>
+                    <ProductsInfo Fintros={this.state.Fintros}/>
                     <FooterButtons allBuy={this.state.allBuy} buyingInfo={this.state.buyingInfo} changeStatus={this.changeStatus.bind(this)}/>
                     <ScroolYToTop/>
                 </div>
