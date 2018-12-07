@@ -133,5 +133,8 @@
       "react-app"
     ]
   },
-  "proxy": "http://dylan.wxyx.youban.com"
+  "proxy": "http://dylan.wxyx.youban.com",
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.7"
+  }
 }

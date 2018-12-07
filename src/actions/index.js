@@ -8,3 +8,8 @@ export const modalOpen=modalopen=>({
     type:types.SET_MODALOPEN,
     modalOpen:modalopen
 })
+
+export const totalPrice=totalprice=>({
+    type:types.CAL_TOATOLPRICE,
+    totalPrice:totalprice
+})

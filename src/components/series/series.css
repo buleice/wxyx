@@ -1,5 +1,5 @@
 .divide{height:7px;background:#f5f5f5;border:#f5f5f5}
-.series-container{width:100%;height:auto;background:#fff;-webkit-box-sizing:border-box;box-sizing:border-box;padding-bottom:4.17rem}
+.series-container{width:100%;height:auto;background:#fff;-webkit-box-sizing:border-box;box-sizing:border-box;}
 .series-container .header{height:3.83rem;line-height:3.93rem;border-bottom:.1px solid #e9eaec;display: inline-block;width: 100%;vertical-align: middle;text-align: left;}
 .series-container .header .title{font-weight:700;font-size:1rem;display: inline-block;vertical-align: middle;font-size: 16px}
 .series-container .header img{height:20px;vertical-align: middle;margin-right: 8px;margin-left: .83rem}
@@ -9,11 +9,11 @@
 .single-course .course-img{width:76px;height:76px;background:#ff9f00;margin-left:.83rem;border-radius:.83rem}
 .course-other{width:260px;height:3.75rem;display:flex;justify-content:space-between;align-items:center;box-sizing:border-box;padding:0 1rem 0 0;margin-left:.33rem}
 .course-other div:first-child{display:flex;height:100%;flex-direction:column;justify-content:space-between;width:155px}
-.course-other div:first-child b{text-align:left;font-size:1.1rem;max-width:9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display: block}
+.course-other div:first-child b{text-align:left;font-size:1.1rem;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display: block}
 .course-other div{width:auto;text-align:center}
 .course-other div .course-info{text-align: left;vertical-align: middle;display: inline-block;}
 .course-other div .course-info img{vertical-align: middle}
-.course-other div .course-info span{vertical-align: middle;margin: 0 3px;color: #929292;}
+.course-other div .course-info span{vertical-align: middle;margin: 0 10px 0 3px;color: #929292;}
 .single-course .course-buyStatus{width:2.5rem;margin-left:auto}
 .hasBought{width:auto;height:2.17rem;padding:0 .5rem;color:#f8b551;line-height:2.17rem;text-align:center;border-radius:1.08rem;border:1px solid currentColor;font-size:1.17rem}
 input[type=checkbox]{visibility:hidden}

@@ -14,7 +14,17 @@ const modalOpen = (state = false, action) => {
             return state
     }
 }
+
+const totalPrice=(state=0,action)=>{
+    switch (action.type) {
+        case 'CAL_TOATOLPRICE':
+            return action.totalPrice;
+        default:
+            return state
+    }
+}
 export {
     carts,
-    modalOpen
+    modalOpen,
+    totalPrice
 }

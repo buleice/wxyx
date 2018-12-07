@@ -1,3 +1,4 @@
 
 export const SET_CARTS='SET_CARTS'
 export const SET_MODALOPEN='SET_MODALOPEN'
+export const CAL_TOATOLPRICE='CAL_TOATOLPRICE'

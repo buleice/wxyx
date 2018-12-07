@@ -11,7 +11,7 @@ export default class FooterButtons extends Component {
         this.pullUpToPay = this.pullUpToPay.bind(this);
         this.state = {
             isalert: false,
-            alertContent: "支付成功"
+            alertContent: "您好!您还没有选中商品,不能支付的哦!",
         }
         this.hideAlert = this.hideAlert.bind(this)
     }
@@ -23,9 +23,9 @@ export default class FooterButtons extends Component {
                 <ul className="buttons">
                     <li onClick={this.props.changeStatus}>
                         <div className="lists"><img className="inventory" src={inventory} alt="数量"/><b
-                            className="badge">+{this.props.buyingInfo.count}</b></div>
+                            className="badge">+{this.props.carts.size}</b></div>
                         <div className="total-price"><span
-                            className="group-text">系列购买  </span>￥<span>{this.props.buyingInfo.buyPrice}</span></div>
+                            className="group-text">系列购买  </span>￥<span>{(this.props.totalPrice).toFixed(2)}</span></div>
                     </li>
                     <li onClick={this.pullUpToPay}>购买</li>
                 </ul>
@@ -36,7 +36,7 @@ export default class FooterButtons extends Component {
                     <div className="weui-dialog">
                         <div className="weui-dialog__bd">{this.state.alertContent}</div>
                         <div className="weui-dialog__ft">
-                            <a className="weui-dialog__btn weui-dialog__btn_primary" onClick={this.hideAlert}>确定</a>
+                            <a className="weui-dialog__btn weui-dialog__btn_primary" onClick={this.hideAlert}>知道了</a>
                         </div>
                     </div>
                 </div>
@@ -47,11 +47,15 @@ export default class FooterButtons extends Component {
 
     hideAlert() {
         this.setState({isalert: false});
-        window.location.reload();
     }
 
     pullUpToPay() {
-        wxPay(`${ROOT}/pay/weixin/series/prepare.json`, this.props.buyingInfo);
-        window.MtaH5.clickStat("pay_series",{"p":this.props.buyingInfo.buyPrice})
+        if(this.props.carts.size>0){
+            wxPay(`${ROOT}/pay/weixin/series/prepare.json`, Object.assign({},{goodsids:[...this.props.carts.keys()]},this.props.buyingInfo));
+        }else{
+            this.setState({
+                isalert:true
+            })
+        }
     }
 }

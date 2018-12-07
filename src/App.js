@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Swipers from './components/slider/slider'
-// import CourserContainer from './components/container/container'
 import FooterButtons  from './container/buttons'
 import ProductsInfo from './components/products-introduction/products-introduction'
 import Series from'./container/series'
@@ -48,10 +47,6 @@ class App extends Component {
                         seriesid:res.data.seriesInfo._id.$oid,
                         urltag:'wxyx_groupbuying_series',
                         shareKey:this._GetQueryString('shareKey'),
-                        Fprice:res.data.seriesInfo.Fprice,
-                        count:res.data.notBuyCount,
-                        origPrice:res.data.origPrice,
-                        buyPrice:res.data.buyPrice,
                     },
                     shareData:{
                         FshareTitle:res.data.seriesInfo.FshareTitle,
@@ -66,16 +61,17 @@ class App extends Component {
                         Fsubtitle:res.data.seriesInfo.Fsubtitle,
                         Ftitle:res.data.seriesInfo.Ftitle,
                         origPrice:res.data.origPrice,
-                        buyPrice:res.data.buyPrice,
+                        buyPrice:res.data.seriesPrice,
                         Fsales:res.data.seriesInfo.Fsales,
                         Number:res.data.seriesInfo.FgoodsList.length,
-                        tag:res.data.tags,
+                        tag:res.data.seriesInfo.Flabel,
                     },
                     idAndShareKey:{
                         id:this._GetQueryString("id"),
                         shareKey:res.data.myShareKey,
                     },
-                    hasBonus:res.data.canGetBonus
+                    hasBonus:res.data.canGetBonus,
+                    Fvideo:res.data.seriesInfo.Fvideo
                 });
                 jsSdkConfig(this.state.shareData);
             }
@@ -88,8 +84,8 @@ class App extends Component {
                     {this.state.seriesInfo.Fbanner.length>1?(<Swipers  lists={this.state.seriesInfo.Fbanner}/>):(<div className="single-banner"><img src={this.state.seriesInfo.Fbanner[0]} alt="课程图片"/></div>)}
                     <GoodInfo hasBonus={this.state.hasBonus} idAndShareKey={this.state.idAndShareKey} goodInfo={this.state.goodInfo}  Fsales={this.state.seriesInfo.Fsales}/>
                     <Series save={this.state.save} FgoodsList={this.state.seriesInfo.FgoodsList} show={this.state.show} changeParentStatus={this.changeParentStatus.bind(this)}/>
-                    <ProductsInfo Fintros={this.state.Fintros}/>
-                    <FooterButtons allBuy={this.state.allBuy} buyingInfo={this.state.buyingInfo} changeStatus={this.changeStatus.bind(this)}/>
+                    <ProductsInfo Fintros={this.state.Fintros} Fvideo={this.state.Fvideo}/>
+                    <FooterButtons allBuy={this.state.allBuy} buyingInfo={this.state.buyingInfo}/>
                     <ScroolYToTop/>
                 </div>
             );

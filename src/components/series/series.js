@@ -4,50 +4,71 @@ import timeIcon from '../../asserts/课时(1).png';
 import peopleIcon from '../../asserts/人物拷贝.png';
 import catalogueIcon from '../../asserts/目录.png'
 import styles from './series.css'
-import {setCarts} from "../../actions";
+import {setCarts,totalPrice} from "../../actions";
 
 class Series extends Component {
     constructor(props){
         super(props);
         this.state={
-            usercart:new Set()
+            goodsList:new Map()
         }
     }
     componentDidMount(){
-        let tempArr=[]
+        let tempMap=new Map();
         let filterList=this.props.FgoodsList.filter((item,index)=>{
             return item.haveBuy==0;
         })
         filterList.map(item=>{
-            tempArr.push(item.id);
+            tempMap.set(item.id,item);
         })
         this.setState({
-            usercart:new Set(tempArr)
+            goodsList:tempMap
         })
+        this.props.dispatch(setCarts(tempMap))
+        this.calculatePrice(tempMap)
     }
-    handleCart(courseId){
-        // this.props.onSetCarts("")
-        let usercart=this.state.usercart;
+    handleCart(courseId,goods){
+        let usercart=this.state.goodsList;
         if(usercart.size>0){
             if(usercart.has(courseId)){
                 usercart.delete(courseId)
                 this.setState({
-                    carts:usercart
+                    goodsList:usercart
                 })
-                // this.props.onSetCarts(usercart)
+                this.props.dispatch(setCarts(usercart))
             }else {
-                usercart.add(courseId)
+                usercart.set(courseId,goods)
                 this.setState({
-                    carts:usercart
+                    goodsList:usercart
                 })
-                // this.props.setCarts(carts)
+                this.props.dispatch(setCarts(usercart))
             }
-        }else{
+        } else{
+            usercart=new Map().set(courseId,goods)
             this.setState({
-                carts:new Set().add(courseId)
+                goodsList:usercart
             })
-            // this.props.setCarts(new Set().add(courseId))
+            this.props.dispatch(setCarts(usercart))
+
         }
+        this.calculatePrice(usercart)
+    }
+
+    calculatePrice(goodsList){
+        let goodslist=goodsList;
+        let totalprice=0;
+        if(goodslist.size===0){
+            this.props.dispatch(totalPrice(0))
+        }else if(goodslist.size===1){
+            goodslist.forEach(function(value, key, map) {
+                totalprice+=Number(value.oriprice)
+            });
+        }else{
+            goodslist.forEach(function(value, key, map) {
+                totalprice+=Number(value.price)
+            });
+        }
+        this.props.dispatch(totalPrice(totalprice))
     }
 
     render() {
@@ -66,13 +87,13 @@ class Series extends Component {
                                 <div className="course-other">
                                     <div>
                                         <b>{goods.title}</b>
-                                        <div className="course-info"><img src={timeIcon} alt=""/><span>共{goods.number}课时</span><img src={peopleIcon} alt=""/><span>1234</span></div>
+                                        <div className="course-info"><img src={timeIcon} alt=""/><span>{goods.number}</span><img src={peopleIcon} alt=""/><span>{goods.sales}</span></div>
                                     </div>
                                     {
                                         goods.haveBuy === 0 ?
                                         (<div>
                                                 <input type="checkbox"  defaultChecked className="checkbox" id={`checkbox${index}`}/>
-                                                <label htmlFor={`checkbox${index}`} onClick={this.handleCart.bind(this,goods.id)} className='cb-label'></label>
+                                                <label htmlFor={`checkbox${index}`} onClick={this.handleCart.bind(this,goods.id,goods)} className='cb-label'></label>
                                             </div>
                                         )
                                         :

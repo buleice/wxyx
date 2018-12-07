@@ -6,7 +6,7 @@ import tagIcon from '../../asserts/标签.png'
 export default class GoodInfo extends Component{
     render(){
         let {Number,Fsales,buyPrice,origPrice,tag,Ftitle,Fsubtitle}=this.props.goodInfo;
-        tag='英语/数学'
+        const tags=tag.split('/')
         return(
             <div className="sad-banner">
                 <div className="title">
@@ -18,7 +18,7 @@ export default class GoodInfo extends Component{
                     <li className={'labels'}>
                         <img src={numberIcon} alt=""/><span>{Number}</span>
                         <img src={peopleIcon} alt=""/><span>{Fsales}</span>
-                        <img src={tagIcon} alt=""/>{tag.split('/').map((item,index)=><span key={index}>{item}</span>)}
+                        <img src={tagIcon} alt=""/>{tags.map((item,index)=><span className={"spanlabel"} key={index}>{item}</span>)}
                     </li>
                     <li className={'prices'}>
                         <span className="originprice"><del className="del">￥{origPrice}</del></span>
