@@ -18,7 +18,7 @@ export default class ProductsInfo extends Component {
     render() {
         return (
             <div>
-                {this.props.Fvideo!=="" && (<nav className="nav" id="nav">
+                {this.props.Fvideo!=='' && (<nav className="nav" id="nav">
                     <ul className="con">
                         <li onClick={this.handleClick.bind(this, 0)} className={this.state.intro === 0 ? 'chosen' : ''}>
                             <a className={this.state.intro === 0 ? 'chosen' : ''}>课程介绍 </a></li>
@@ -33,10 +33,9 @@ export default class ProductsInfo extends Component {
                 </div>) : (
                     <div className="experience">
                         <video src={this.props.Fvideo}
-                               x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-playsinline=""
-                               playsinline=""
-                               wekit-playsinline="" preload="auto"
-                               controls="controls"></video>
+                                x5-playsinline=""
+                               webkit-playsinline="" playsInline=""  preload="auto"
+                               controls="controls" poster={`${this.props.Fvideo}?vframe/jpg/offset/24/w/375/h/180`}></video>
                     </div>
                 )}
             </div>

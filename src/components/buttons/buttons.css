@@ -27,7 +27,7 @@
     font-size:1.5rem;
 
 }
-.buttons li:first-child{box-sizing: border-box;padding: 0 .83rem;display: flex;justify-content: space-between}
+.buttons li:first-child{box-sizing: border-box;padding: 0 .83rem;display: flex;justify-content: space-around;}
 .lists{height:100%; display: flex;align-items: center}
 .total-price{color: red;font-size: 1rem;}
 .total-price .group-text{color: rgba(0,0,0,8);font-size: 1.16rem}

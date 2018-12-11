@@ -24,8 +24,7 @@ export default class FooterButtons extends Component {
                     <li onClick={this.props.changeStatus}>
                         <div className="lists"><img className="inventory" src={inventory} alt="数量"/><b
                             className="badge">+{this.props.carts.size}</b></div>
-                        <div className="total-price"><span
-                            className="group-text">系列购买  </span>￥<span>{(this.props.totalPrice).toFixed(2)}</span></div>
+                        <div className="total-price">￥<span>{(this.props.totalPrice).toFixed(2)}</span></div>
                     </li>
                     <li onClick={this.pullUpToPay}>购买</li>
                 </ul>

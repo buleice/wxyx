@@ -25,6 +25,5 @@ const totalPrice=(state=0,action)=>{
 }
 export {
     carts,
-    modalOpen,
     totalPrice
 }

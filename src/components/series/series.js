@@ -27,7 +27,9 @@ class Series extends Component {
         this.props.dispatch(setCarts(tempMap))
         this.calculatePrice(tempMap)
     }
-    handleCart(courseId,goods){
+    handleCart(courseId,goods,e){
+        e.nativeEvent.stopImmediatePropagation();
+        e.stopPropagation();
         let usercart=this.state.goodsList;
         if(usercart.size>0){
             if(usercart.has(courseId)){
@@ -70,6 +72,14 @@ class Series extends Component {
         }
         this.props.dispatch(totalPrice(totalprice))
     }
+    hrefTo(id,e){
+        if(e.target&&e.target.matches('input')){
+            return;
+        }else{
+            window.location.href= `/purchase/index?id=${id}`
+        }
+
+    }
 
     render() {
         return (
@@ -82,26 +92,26 @@ class Series extends Component {
                     </div>
                     <ul className="series-body">
                         {
-                            this.props.FgoodsList.map((goods, index) => <li className="single-course" key={index}>
-                                <img className="course-img" src={goods.img} alt="图片"/>
-                                <div className="course-other">
-                                    <div>
-                                        <b>{goods.title}</b>
-                                        <div className="course-info"><img src={timeIcon} alt=""/><span>{goods.number}</span><img src={peopleIcon} alt=""/><span>{goods.sales}</span></div>
+                            this.props.FgoodsList.map((goods, index) => <li className="single-course" onClick={(e)=>this.hrefTo(goods.id,e)} key={index}>
+                                    <img className="course-img" src={goods.img} alt="图片"/>
+                                    <div className="course-other">
+                                        <div>
+                                            <b>{goods.title}</b>
+                                            <div className="course-info"><img src={timeIcon} alt=""/><span>{goods.number}</span><img src={peopleIcon} alt=""/><span>{goods.sales}</span></div>
+                                        </div>
+                                        {
+                                            goods.haveBuy === 0 ?
+                                                (<div>
+                                                        <input type="checkbox"  defaultChecked className="checkbox" id={`checkbox${index}`}/>
+                                                        <label htmlFor={`checkbox${index}`} onClick={(e)=>this.handleCart(goods.id,goods,e)} className='cb-label'></label>
+                                                    </div>
+                                                )
+                                                :
+                                                (
+                                                    <div><span className="hasBought">已购买</span></div>
+                                                )
+                                        }
                                     </div>
-                                    {
-                                        goods.haveBuy === 0 ?
-                                        (<div>
-                                                <input type="checkbox"  defaultChecked className="checkbox" id={`checkbox${index}`}/>
-                                                <label htmlFor={`checkbox${index}`} onClick={this.handleCart.bind(this,goods.id,goods)} className='cb-label'></label>
-                                            </div>
-                                        )
-                                        :
-                                        (
-                                            <div><span className="hasBought">已购买</span></div>
-                                        )
-                                    }
-                                </div>
                             </li>)
                         }
                     </ul>
