@@ -13,3 +13,20 @@ export const totalPrice=totalprice=>({
     type:types.CAL_TOATOLPRICE,
     totalPrice:totalprice
 })
+export const showCouponBuy=isShow=>({
+    type:types.SET_SHOWCOUPONBUY,
+    showCouponBuy:isShow,
+})
+export const couponBuyFilter=condition=>({
+    type:types.SET_COUPONBUYFILTER,
+    couponBuyFilter:condition
+})
+export const userCoupons=coupons=>({
+    type:types.SET_COUPONS,
+    userCoupons:coupons
+})
+
+export const cantuanPrice=price=>({
+    type:types.SET_CANTUANPRICE,
+    cantuanPrice:price
+})

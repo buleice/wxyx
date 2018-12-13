@@ -1,5 +1,12 @@
 import {combineReducers} from 'redux'
-import {carts,totalPrice} from "./cartsReducer";
+import {
+    carts, totalPrice, showCouponBuy, couponBuyFilter, userCoupons
+} from "./cartsReducer";
+
 export default combineReducers({
-    carts,totalPrice
+    carts,
+    totalPrice,
+    showCouponBuy,
+    couponBuyFilter,
+    userCoupons,
 })

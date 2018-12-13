@@ -12,6 +12,8 @@ export default class FooterButtons extends Component {
         this.state = {
             isalert: false,
             alertContent: "您好!您还没有选中商品,不能支付的哦!",
+            canUseCouon:props.buyingInfo.canUseCouon,
+            canclick:true
         }
         this.hideAlert = this.hideAlert.bind(this)
     }
@@ -49,12 +51,32 @@ export default class FooterButtons extends Component {
     }
 
     pullUpToPay() {
-        if(this.props.carts.size>0){
-            wxPay(`${ROOT}/pay/weixin/series/prepare.json`, Object.assign({},{goodsids:[...this.props.carts.keys()]},this.props.buyingInfo));
-        }else{
+        if(this.state.canclick){
             this.setState({
-                isalert:true
+                canclick:false
             })
+            setTimeout(()=> {
+                this.setState({
+                    canclick:true
+                })
+            },2000)
+            if(this.props.carts.size>0){
+                let filteredCoupons=this.props.userCoupons.filter(item=>{
+                    return this.props.totalPrice>=item.spendMoney
+                });
+                if(filteredCoupons.length>0){
+                    this.props.setshowCouponBuy(true);
+                    this.props.setCouponBuyFilter(this.props.totalPrice)
+                    return
+                }
+                wxPay(`${ROOT}/pay/weixin/series/prepare.json`, Object.assign({},{goodsids:[...this.props.carts.keys()]},this.props.buyingInfo));
+            }else{
+                this.setState({
+                    isalert:true
+                })
+            }
+        }else{
+            return
         }
     }
 }

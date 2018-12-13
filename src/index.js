@@ -2,9 +2,10 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import App from './App'
+import App from './container/App';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './configureStore'
+import 'babel-polyfill';
 
 const store = configureStore()
 

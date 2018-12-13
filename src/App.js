@@ -6,8 +6,10 @@ import ProductsInfo from './components/products-introduction/products-introducti
 import Series from'./container/series'
 import GoodInfo from './components/goodInfo/goodInfo'
 import ScroolYToTop from './components/toTop/totop';
+import CouponBuy from './container/couponBuy'
 import axios from 'axios';
 import {ROOT} from './components/common/js/url-config';
+import AdPush from './components/push-component/push-component'
 import {jsSdkConfig} from './components/common/js/jsSdk'
 
 
@@ -39,6 +41,8 @@ class App extends Component {
     componentWillMount(){
      axios.get(`${ROOT}/purchase/series.json?id=${this._GetQueryString("id")}`).then(res=>{
             if(res.status===200){
+                let pageData=res.data;
+                this.props.setUserCoupons(pageData.coupons)
                 this.setState({
                     seriesInfo: res.data.seriesInfo,
                     loading:true,
@@ -47,6 +51,7 @@ class App extends Component {
                         seriesid:res.data.seriesInfo._id.$oid,
                         urltag:'wxyx_groupbuying_series',
                         shareKey:this._GetQueryString('shareKey'),
+                        canUseCouon:pageData.coupons.length>0?true:false,
                     },
                     shareData:{
                         FshareTitle:res.data.seriesInfo.FshareTitle,
@@ -71,9 +76,11 @@ class App extends Component {
                         shareKey:res.data.myShareKey,
                     },
                     hasBonus:res.data.canGetBonus,
-                    Fvideo:res.data.seriesInfo.Fvideo
+                    Fvideo:res.data.seriesInfo.Fvideo,
+                    couponSent:pageData.couponSent
                 });
                 jsSdkConfig(this.state.shareData);
+
             }
         })
     }
@@ -85,8 +92,10 @@ class App extends Component {
                     <GoodInfo hasBonus={this.state.hasBonus} idAndShareKey={this.state.idAndShareKey} goodInfo={this.state.goodInfo}  Fsales={this.state.seriesInfo.Fsales}/>
                     <Series save={this.state.save} FgoodsList={this.state.seriesInfo.FgoodsList} show={this.state.show} changeParentStatus={this.changeParentStatus.bind(this)}/>
                     <ProductsInfo Fintros={this.state.Fintros} Fvideo={this.state.Fvideo}/>
+                    <CouponBuy buyingInfo={this.state.buyingInfo}></CouponBuy>
                     <FooterButtons allBuy={this.state.allBuy} buyingInfo={this.state.buyingInfo}/>
                     <ScroolYToTop/>
+                    <AdPush couponSent={this.state.couponSent}></AdPush>
                 </div>
             );
         }else{

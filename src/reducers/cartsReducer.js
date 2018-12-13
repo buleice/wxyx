@@ -1,3 +1,5 @@
+import {addClass} from "../components/common/js/dom";
+
 const carts = (state = [], action) => {
     switch (action.type) {
         case 'SET_CARTS':
@@ -23,7 +25,43 @@ const totalPrice=(state=0,action)=>{
             return state
     }
 }
+const showCouponBuy=(state=false,action)=>{
+    switch (action.type) {
+        case 'SET_SHOWCOUPONBUY':
+            return action.showCouponBuy;
+        default:
+            return state
+    }
+}
+const couponBuyFilter=(state=0,action)=>{
+    switch (action.type) {
+        case 'SET_COUPONBUYFILTER':
+            return action.couponBuyFilter;
+        default:
+            return state
+    }
+}
+const userCoupons=(state=[],action)=>{
+    switch (action.type) {
+        case "SET_COUPONS":
+            return action.userCoupons;
+        default:
+            return state
+    }
+}
+const cantuanPrice=(state=0,action)=>{
+    switch (action.type) {
+        case "SET_CANTUANPRICE":
+            return action.cantuanPrice;
+        default:
+            return state
+    }
+}
 export {
     carts,
-    totalPrice
+    totalPrice,
+    showCouponBuy,
+    couponBuyFilter,
+    userCoupons,
+    cantuanPrice
 }
