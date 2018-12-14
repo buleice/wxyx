@@ -7,17 +7,18 @@
 .single-course{display:flex;height:8.75rem;align-items:center;justify-content:space-between;border-bottom:1px solid #e9eaec;position:relative}
 .single-course .hasBuy{position:absolute;width:100%;height:100%;left:0;top:0;background-color:rgba(0,0,0,.5)}
 .single-course .course-img{width:76px;height:76px;background:#ff9f00;margin-left:.83rem;border-radius:.83rem}
-.course-other{width:260px;height:3.75rem;display:flex;justify-content:space-between;align-items:center;box-sizing:border-box;padding:0 1rem 0 0;margin-left:.33rem}
+.course-other{width:21.7rem;height:3.75rem;display:flex;justify-content:space-between;align-items:center;box-sizing:border-box;margin-left:.33rem}
 .course-other div:first-child{display:flex;height:100%;flex-direction:column;justify-content:space-between;width:155px}
 .course-other div:first-child b{text-align:left;font-size:1.1rem;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display: block}
 .course-other div{width:auto;text-align:center}
+.course-other .clickbox{padding: 0 1rem 0;text-align: center}
 .course-other div .course-info{text-align: left;vertical-align: middle;display: inline-block;}
 .course-other div .course-info img{vertical-align: middle}
 .course-other div .course-info span{vertical-align: middle;margin: 0 10px 0 3px;color: #929292;}
 .single-course .course-buyStatus{width:2.5rem;margin-left:auto}
 .hasBought{width:auto;height:2.17rem;padding:0 .5rem;color:#f8b551;line-height:2.17rem;text-align:center;border-radius:1.08rem;border:1px solid currentColor;font-size:1.17rem}
 input[type=checkbox]{visibility:hidden}
-input[type=checkbox]+label{width:23px;height:23px;border-radius:50%;border:1px solid #cfcece;display:inline-block;position:relative;transition:border-color ease .2s}
+input[type=checkbox]+label{width:2rem;height:2rem;margin: 2rem;background-origin:content-box;border-radius:50%;border:1px solid #cfcece;display:inline-block;position:relative;transition:border-color ease .2s}
 /*input[type=checkbox]+label::before{display:block;content:"\2714";text-align:center;font-size:16px;color:#fff}*/
 input[type=checkbox]:checked+label{border:#ff9f00;animation:dothabottomcheck .2s ease 0s forwards;background-image: url("../../asserts/完成 (3).png");background-repeat: no-repeat;background-size: 100% 100%}
 /*input[type=checkbox]:checked+label::before{display:block;content:"\2714";text-align:center;font-size:16px;color:#fff}*/

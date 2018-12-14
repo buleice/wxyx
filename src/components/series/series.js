@@ -5,6 +5,7 @@ import peopleIcon from '../../asserts/人物拷贝.png';
 import catalogueIcon from '../../asserts/目录.png'
 import styles from './series.css'
 import {setCarts,totalPrice} from "../../actions";
+import {Calculation} from '../common/js/process'
 
 class Series extends Component {
     constructor(props){
@@ -28,6 +29,7 @@ class Series extends Component {
         this.calculatePrice(tempMap)
     }
     handleCart(courseId,goods,e){
+        console.log(e)
         e.nativeEvent.stopImmediatePropagation();
         e.stopPropagation();
         let usercart=this.state.goodsList;
@@ -63,11 +65,11 @@ class Series extends Component {
             this.props.dispatch(totalPrice(0))
         }else if(goodslist.size===1){
             goodslist.forEach(function(value, key, map) {
-                totalprice+=Number(value.oriprice)
+                totalprice=Calculation("add",totalprice,Number(value.oriprice))
             });
         }else{
             goodslist.forEach(function(value, key, map) {
-                totalprice+=Number(value.price)
+                totalprice=Calculation("add",totalprice,Number(value.price))
             });
         }
         this.props.dispatch(totalPrice(totalprice))
@@ -101,14 +103,14 @@ class Series extends Component {
                                         </div>
                                         {
                                             goods.haveBuy === 0 ?
-                                                (<div>
+                                                (<div className={"clickbox"} onClick={(e)=>{e.stopPropagation()}}>
                                                         <input type="checkbox"  defaultChecked className="checkbox" id={`checkbox${index}`}/>
-                                                        <label htmlFor={`checkbox${index}`} onClick={(e)=>this.handleCart(goods.id,goods,e)} className='cb-label'></label>
+                                                        <label htmlFor={`checkbox${index}`} onClick={(e)=>this.handleCart(goods.id,goods,e)}  className='cb-label'></label>
                                                     </div>
                                                 )
                                                 :
                                                 (
-                                                    <div><span className="hasBought">已购买</span></div>
+                                                    <div className={"clickbox"}><span className="hasBought">已购买</span></div>
                                                 )
                                         }
                                     </div>
