@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="faa4b0ca-7c06-41bb-b17e-21a1db83554c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/common/js/process.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/series/series.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/series/series.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/series/series.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/series/series.js" afterDir="false" />
-    </list>
+    <list default="true" id="faa4b0ca-7c06-41bb-b17e-21a1db83554c" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -86,7 +80,7 @@
     <session id="428186221">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.4" value="1" />
@@ -453,7 +447,7 @@
       <workItem from="1544601307233" duration="4629000" />
       <workItem from="1544665408821" duration="4437000" />
       <workItem from="1544688554792" duration="304000" />
-      <workItem from="1544690495561" duration="13401000" />
+      <workItem from="1544690495561" duration="13521000" />
     </task>
     <task id="LOCAL-00001" summary="'优化功能'">
       <created>1543921882421</created>
@@ -476,11 +470,18 @@
       <option name="project" value="LOCAL" />
       <updated>1544703800614</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="'优化功能'">
+      <created>1544783487266</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1544783487266</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="212070000" />
+    <option name="totallyTimeSpent" value="212190000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
