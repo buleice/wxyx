@@ -29,9 +29,8 @@ class Series extends Component {
         this.calculatePrice(tempMap)
     }
     handleCart(courseId,goods,e){
-        console.log(e)
-        e.nativeEvent.stopImmediatePropagation();
-        e.stopPropagation();
+        // e.nativeEvent.stopImmediatePropagation();
+        // e.stopPropagation();
         let usercart=this.state.goodsList;
         if(usercart.size>0){
             if(usercart.has(courseId)){
@@ -105,7 +104,7 @@ class Series extends Component {
                                             goods.haveBuy === 0 ?
                                                 (<div className={"clickbox"} onClick={(e)=>{e.stopPropagation()}}>
                                                         <input type="checkbox"  defaultChecked className="checkbox" id={`checkbox${index}`}/>
-                                                        <label htmlFor={`checkbox${index}`} onClick={(e)=>this.handleCart(goods.id,goods,e)}  className='cb-label'></label>
+                                                        <label htmlFor={`checkbox${index}`} onClick={()=>this.handleCart(goods.id,goods)}  className='cb-label'></label>
                                                     </div>
                                                 )
                                                 :
