@@ -93,7 +93,7 @@ const wxPay=function (url,data) {
     }).then(response=>{
         if(response.status===200){
              jsSDK(response.data.data);
-            needAddress=response.needAddress;
+            needAddress=response.data.needAddress;
         }
     }).catch(function (errors) {
         console.log('errors', errors);
