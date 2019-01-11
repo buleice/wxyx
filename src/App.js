@@ -39,7 +39,56 @@ class App extends Component {
         })
     }
     componentWillMount(){
-     axios.get(`${ROOT}/purchase/series.json?id=${this._GetQueryString("id")}`).then(res=>{
+    this._initPageData()
+    }
+    componentDidMount(){
+        console.log("监听")
+        window.addEventListener('popstate', function (e) {
+            // alert('我监听到了浏览器的返回按钮事件啦'); // 根据自己的需求实现自己的功能
+            //window.location.href = 'home.html';
+            // history.go(0);
+            this._initPageData()
+
+        }, false);
+    }
+    render() {
+        if(this.state.loading){
+            return (
+                <div className="App">
+                    {this.state.seriesInfo.Fbanner.length>1?(<Swipers  lists={this.state.seriesInfo.Fbanner}/>):(<div className="single-banner"><img src={this.state.seriesInfo.Fbanner[0]} alt="课程图片"/></div>)}
+                    <GoodInfo hasBonus={this.state.hasBonus} idAndShareKey={this.state.idAndShareKey} goodInfo={this.state.goodInfo}  Fsales={this.state.seriesInfo.Fsales}/>
+                    <Series save={this.state.save} FgoodsList={this.state.seriesInfo.FgoodsList} show={this.state.show} changeParentStatus={this.changeParentStatus.bind(this)}/>
+                    <ProductsInfo Fintros={this.state.Fintros} Fvideo={this.state.Fvideo}/>
+                    <CouponBuy buyingInfo={this.state.buyingInfo}></CouponBuy>
+                    <FooterButtons allBuy={this.state.allBuy} buyingInfo={this.state.buyingInfo} needAddress={this.state.needAddress}/>
+                    <ScroolYToTop/>
+                    <AdPush couponSent={this.state.couponSent}></AdPush>
+                </div>
+            );
+        }else{
+            return (<div className="loading-mask" id="loadingDiv">
+                <div className="loader">
+                    <div className="square"></div>
+                    <div className="square"></div>
+                    <div className="square last"></div>
+                    <div className="square clear"></div>
+                    <div className="square"></div>
+                    <div className="square last"></div>
+                    <div className="square clear"></div>
+                    <div className="square "></div>
+                    <div className="square last"></div>
+                </div>
+            </div>)
+        }
+    }
+    _GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg); //search,查询？后面的参数，并匹配正则
+        if (r != null) return unescape(r[2]);
+        return '';
+    }
+    _initPageData(){
+        axios.get(`${ROOT}/purchase/series.json?id=${this._GetQueryString("id")}`).then(res=>{
             if(res.status===200){
                 let pageData=res.data;
                 this.props.setUserCoupons(pageData.coupons)
@@ -77,48 +126,13 @@ class App extends Component {
                     },
                     hasBonus:res.data.canGetBonus,
                     Fvideo:res.data.seriesInfo.Fvideo,
-                    couponSent:pageData.couponSent
+                    couponSent:pageData.couponSent,
+                    needAddress:pageData.needAddress==1?true:false
                 });
                 jsSdkConfig(this.state.shareData);
 
             }
         })
-    }
-    render() {
-        if(this.state.loading){
-            return (
-                <div className="App">
-                    {this.state.seriesInfo.Fbanner.length>1?(<Swipers  lists={this.state.seriesInfo.Fbanner}/>):(<div className="single-banner"><img src={this.state.seriesInfo.Fbanner[0]} alt="课程图片"/></div>)}
-                    <GoodInfo hasBonus={this.state.hasBonus} idAndShareKey={this.state.idAndShareKey} goodInfo={this.state.goodInfo}  Fsales={this.state.seriesInfo.Fsales}/>
-                    <Series save={this.state.save} FgoodsList={this.state.seriesInfo.FgoodsList} show={this.state.show} changeParentStatus={this.changeParentStatus.bind(this)}/>
-                    <ProductsInfo Fintros={this.state.Fintros} Fvideo={this.state.Fvideo}/>
-                    <CouponBuy buyingInfo={this.state.buyingInfo}></CouponBuy>
-                    <FooterButtons allBuy={this.state.allBuy} buyingInfo={this.state.buyingInfo}/>
-                    <ScroolYToTop/>
-                    <AdPush couponSent={this.state.couponSent}></AdPush>
-                </div>
-            );
-        }else{
-            return (<div className="loading-mask" id="loadingDiv">
-                <div className="loader">
-                    <div className="square"></div>
-                    <div className="square"></div>
-                    <div className="square last"></div>
-                    <div className="square clear"></div>
-                    <div className="square"></div>
-                    <div className="square last"></div>
-                    <div className="square clear"></div>
-                    <div className="square "></div>
-                    <div className="square last"></div>
-                </div>
-            </div>)
-        }
-    }
-    _GetQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg); //search,查询？后面的参数，并匹配正则
-        if (r != null) return unescape(r[2]);
-        return '';
     }
 }
 

@@ -31,7 +31,7 @@ export default class FooterButtons extends Component {
                     <li onClick={this.pullUpToPay}>购买</li>
                 </ul>
                 ):
-                (<a href="/shop/index?source=mine" className="shangKe">去上课</a>)}
+                (<div>{this.props.needAddress?<a href={`/address/index?#/orderpage?id=${this._GetQueryString('id')}`} className="shangKe address">实物商品未填取地址哦！</a>:<a href="/shop/index?#/course" className="shangKe">去上课</a>}</div>)}
                 <div className="js_dialog" className={this.state.isalert ? "showAlert" : "hideAlert"}>
                     <div className="weui-mask"></div>
                     <div className="weui-dialog">
@@ -78,5 +78,11 @@ export default class FooterButtons extends Component {
         }else{
             return
         }
+    }
+    _GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg); //search,查询？后面的参数，并匹配正则
+        if (r != null) return unescape(r[2]);
+        return '';
     }
 }

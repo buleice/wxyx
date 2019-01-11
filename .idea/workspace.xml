@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="faa4b0ca-7c06-41bb-b17e-21a1db83554c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/series/series.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/series/series.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/series/series.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/series/series.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/buttons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/buttons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/js/jsSdk.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/js/jsSdk.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -87,51 +86,52 @@
     <session id="428186221">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
-          <entry key="project.open.time.0" value="5" />
-          <entry key="project.open.time.1" value="2" />
+          <entry key="project.closed" value="15" />
+          <entry key="project.open.time.0" value="9" />
+          <entry key="project.open.time.1" value="3" />
+          <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="18" />
+          <entry key="css" value="19" />
           <entry key="html" value="2" />
-          <entry key="js" value="89" />
-          <entry key="json" value="4" />
+          <entry key="js" value="92" />
+          <entry key="json" value="5" />
           <entry key="png" value="1" />
           <entry key="scss" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="18" />
+          <entry key="CSS" value="19" />
           <entry key="HTML" value="2" />
           <entry key="Image" value="1" />
-          <entry key="JSON" value="4" />
-          <entry key="JavaScript" value="89" />
+          <entry key="JSON" value="5" />
+          <entry key="JavaScript" value="92" />
           <entry key="SCSS" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="700" />
+          <entry key="css" value="703" />
           <entry key="html" value="1" />
-          <entry key="js" value="2654" />
+          <entry key="js" value="2897" />
           <entry key="json" value="5" />
           <entry key="scss" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="700" />
+          <entry key="CSS" value="703" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="5" />
-          <entry key="JavaScript" value="2654" />
+          <entry key="JavaScript" value="2897" />
           <entry key="SCSS" value="14" />
         </counts>
       </usages-collector>
@@ -140,19 +140,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/common/js/wxpay.js">
+        <entry file="file://$PROJECT_DIR$/src/components/buttons/buttons.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="1" />
+            <state relative-caret-position="345">
+              <caret line="33" column="157" selection-start-line="33" selection-start-column="146" selection-end-line="33" selection-end-column="157" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/common/js/jsSdk.js">
+        <entry file="file://$PROJECT_DIR$/src/components/buttons/buttons.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-484">
-              <caret line="77" column="33" lean-forward="true" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
+            <state relative-caret-position="264">
+              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="601">
+              <caret line="48" column="29" lean-forward="true" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -213,7 +222,6 @@
         <option value="$PROJECT_DIR$/src/components/common/css/weui.min.css" />
         <option value="$PROJECT_DIR$/src/components/common/js/url-config.js" />
         <option value="$PROJECT_DIR$/src/components/toTop/toTop.css" />
-        <option value="$PROJECT_DIR$/src/components/common/js/jsSdk.js" />
         <option value="$PROJECT_DIR$/src/components/slider/slider.js" />
         <option value="$PROJECT_DIR$/src/components/slider/slider.css" />
         <option value="$PROJECT_DIR$/src/components/betterScroll/betterScroll.scss" />
@@ -240,15 +248,12 @@
         <option value="$PROJECT_DIR$/src/reducers/index.js" />
         <option value="$PROJECT_DIR$/src/container/buttons.js" />
         <option value="$PROJECT_DIR$/src/components/couponBuy/couponBuy.scss" />
-        <option value="$PROJECT_DIR$/src/components/buttons/buttons.css" />
         <option value="$PROJECT_DIR$/src/actions/action-types.js" />
         <option value="$PROJECT_DIR$/src/actions/index.js" />
         <option value="$PROJECT_DIR$/src/reducers/cartsReducer.js" />
         <option value="$PROJECT_DIR$/src/container/App.js" />
         <option value="$PROJECT_DIR$/src/components/push-component/push-component.js" />
         <option value="$PROJECT_DIR$/src/container/couponBuy.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/components/buttons/buttons.js" />
         <option value="$PROJECT_DIR$/config/webpack.config.prod.js" />
         <option value="$PROJECT_DIR$/src/components/common/js/process.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
@@ -256,6 +261,10 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/series/series.js" />
         <option value="$PROJECT_DIR$/src/components/series/series.css" />
+        <option value="$PROJECT_DIR$/src/components/common/js/jsSdk.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/components/buttons/buttons.js" />
+        <option value="$PROJECT_DIR$/src/components/buttons/buttons.css" />
       </list>
     </option>
   </component>
@@ -282,10 +291,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-237" />
-    <option name="y" value="335" />
-    <option name="width" value="1932" />
-    <option name="height" value="1047" />
+    <option name="x" value="428" />
+    <option name="y" value="169" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -316,6 +325,13 @@
               <item name="wxyx" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wxyx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wxyx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="buttons" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="wxyx" type="b2602c69:ProjectViewProjectNode" />
@@ -414,6 +430,12 @@
       <workItem from="1545207041313" duration="828000" />
       <workItem from="1545215051132" duration="831000" />
       <workItem from="1545389093014" duration="195000" />
+      <workItem from="1546917722671" duration="1408000" />
+      <workItem from="1546930274559" duration="265000" />
+      <workItem from="1546938290176" duration="634000" />
+      <workItem from="1547085292106" duration="627000" />
+      <workItem from="1547103812110" duration="670000" />
+      <workItem from="1547189054055" duration="4043000" />
     </task>
     <task id="LOCAL-00001" summary="'优化功能'">
       <created>1543921882421</created>
@@ -447,13 +469,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214730000" />
+    <option name="totallyTimeSpent" value="222377000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15964173" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14225501" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -658,13 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/buttons/buttons.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/cartsReducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
@@ -728,13 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/push-component/push-component.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -763,13 +771,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/buttons/buttons.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="28" column="95" selection-start-line="28" selection-start-column="84" selection-end-line="28" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/couponBuy/couponBuy.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -784,13 +785,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/series/series.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -802,9 +796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -815,10 +806,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="827">
+          <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/js/jsSdk.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-484">
-          <caret line="77" column="33" lean-forward="true" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
+        <state relative-caret-position="2082">
+          <caret line="124" column="80" selection-start-line="124" selection-start-column="80" selection-end-line="124" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="48" column="29" lean-forward="true" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/buttons/buttons.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="33" column="157" selection-start-line="33" selection-start-column="146" selection-end-line="33" selection-end-column="157" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/buttons/buttons.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
         </state>
       </provider>
     </entry>

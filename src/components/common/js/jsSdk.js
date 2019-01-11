@@ -1,4 +1,4 @@
-
+let needAddress=0;
 const axios =require('axios');
 const Config =require('./url-config')
 axios.defaults.withCredentials=true;
@@ -93,6 +93,7 @@ const wxPay=function (url,data) {
     }).then(response=>{
         if(response.status===200){
              jsSDK(response.data.data);
+            needAddress=response.needAddress;
         }
     }).catch(function (errors) {
         console.log('errors', errors);
@@ -118,13 +119,22 @@ const onBridgeReady=function (params) {
         'getBrandWCPayRequest', params,
         function(res) {
             if (res.err_msg === "get_brand_wcpay_request:ok") {
-                alert("支付成功");
-                window.location.reload()
+                if(needAddress===0){
+                    window.location.reload()
+                }else{
+                    setTimeout(()=>{window.location.href=`/address/index?#/orderpage?id=${_GetQueryString('id')}`},300)
+                }
             } else {
                 alert("支付失败");
             }
         }
     );
+}
+const _GetQueryString=(name)=> {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg); //search,查询？后面的参数，并匹配正则
+    if (r != null) return unescape(r[2]);
+    return '';
 }
 
 export {
