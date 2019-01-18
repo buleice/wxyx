@@ -42,13 +42,8 @@ class App extends Component {
     this._initPageData()
     }
     componentDidMount(){
-        console.log("监听")
-        window.addEventListener('popstate', function (e) {
-            // alert('我监听到了浏览器的返回按钮事件啦'); // 根据自己的需求实现自己的功能
-            //window.location.href = 'home.html';
-            // history.go(0);
+        window.addEventListener('popstate', function () {
             this._initPageData()
-
         }, false);
     }
     render() {
@@ -57,10 +52,10 @@ class App extends Component {
                 <div className="App">
                     {this.state.seriesInfo.Fbanner.length>1?(<Swipers  lists={this.state.seriesInfo.Fbanner}/>):(<div className="single-banner"><img src={this.state.seriesInfo.Fbanner[0]} alt="课程图片"/></div>)}
                     <GoodInfo hasBonus={this.state.hasBonus} idAndShareKey={this.state.idAndShareKey} goodInfo={this.state.goodInfo}  Fsales={this.state.seriesInfo.Fsales}/>
-                    <Series save={this.state.save} FgoodsList={this.state.seriesInfo.FgoodsList} show={this.state.show} changeParentStatus={this.changeParentStatus.bind(this)}/>
+                    <Series FgoodsList={this.state.seriesInfo.FgoodsList} show={this.state.show} changeParentStatus={this.changeParentStatus.bind(this)}/>
                     <ProductsInfo Fintros={this.state.Fintros} Fvideo={this.state.Fvideo}/>
                     <CouponBuy buyingInfo={this.state.buyingInfo}></CouponBuy>
-                    <FooterButtons allBuy={this.state.allBuy} buyingInfo={this.state.buyingInfo} needAddress={this.state.needAddress}/>
+                    <FooterButtons allBuy={this.state.allBuy} buyingInfo={this.state.buyingInfo}/>
                     <ScroolYToTop/>
                     <AdPush couponSent={this.state.couponSent}></AdPush>
                 </div>
@@ -91,6 +86,7 @@ class App extends Component {
         axios.get(`${ROOT}/purchase/series.json?id=${this._GetQueryString("id")}`).then(res=>{
             if(res.status===200){
                 let pageData=res.data;
+                this.props.setPageData(res.data)
                 this.props.setUserCoupons(pageData.coupons)
                 this.setState({
                     seriesInfo: res.data.seriesInfo,
@@ -101,6 +97,8 @@ class App extends Component {
                         urltag:'wxyx_groupbuying_series',
                         shareKey:this._GetQueryString('shareKey'),
                         canUseCouon:pageData.coupons.length>0?true:false,
+                        orderExpress_id:pageData.orderExpress_id,
+                        needAddress:pageData.needAddress===1?true:false
                     },
                     shareData:{
                         FshareTitle:res.data.seriesInfo.FshareTitle,
@@ -127,7 +125,6 @@ class App extends Component {
                     hasBonus:res.data.canGetBonus,
                     Fvideo:res.data.seriesInfo.Fvideo,
                     couponSent:pageData.couponSent,
-                    needAddress:pageData.needAddress==1?true:false
                 });
                 jsSdkConfig(this.state.shareData);
 

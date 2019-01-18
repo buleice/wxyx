@@ -18,6 +18,7 @@ export default class FooterButtons extends Component {
         this.hideAlert = this.hideAlert.bind(this)
     }
     render() {
+        let orderExpress_id=1;
         return (
             <div>
                 {this.props.allBuy===0?
@@ -31,7 +32,7 @@ export default class FooterButtons extends Component {
                     <li onClick={this.pullUpToPay}>购买</li>
                 </ul>
                 ):
-                (<div>{this.props.needAddress?<a href={`/address/index?#/orderpage?id=${this._GetQueryString('id')}`} className="shangKe address">实物商品未填取地址哦！</a>:<a href="/shop/index?#/course" className="shangKe">去上课</a>}</div>)}
+                (<div><a href="/shop/index?#/course" className="shangKe">去上课</a></div>)}
                 <div className="js_dialog" className={this.state.isalert ? "showAlert" : "hideAlert"}>
                     <div className="weui-mask"></div>
                     <div className="weui-dialog">

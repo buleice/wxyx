@@ -30,3 +30,7 @@ export const cantuanPrice=price=>({
     type:types.SET_CANTUANPRICE,
     cantuanPrice:price
 })
+export const pageData=data=>({
+    type:types.SET_PAGEDATA,
+    pageData:data
+})

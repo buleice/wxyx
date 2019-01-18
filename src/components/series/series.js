@@ -17,7 +17,7 @@ class Series extends Component {
     componentDidMount(){
         let tempMap=new Map();
         let filterList=this.props.FgoodsList.filter((item,index)=>{
-            return item.haveBuy==0;
+            return item.haveBuy===0;
         })
         filterList.map(item=>{
             tempMap.set(item.id,item);
@@ -25,7 +25,7 @@ class Series extends Component {
         this.setState({
             goodsList:tempMap
         })
-        this.props.dispatch(setCarts(tempMap))
+        this.props.setCarts(tempMap)
         this.calculatePrice(tempMap)
     }
     handleCart(courseId,goods,e){
@@ -38,20 +38,20 @@ class Series extends Component {
                 this.setState({
                     goodsList:usercart
                 })
-                this.props.dispatch(setCarts(usercart))
+                this.props.setCarts(usercart)
             }else {
                 usercart.set(courseId,goods)
                 this.setState({
                     goodsList:usercart
                 })
-                this.props.dispatch(setCarts(usercart))
+                this.props.setCarts(usercart)
             }
         } else{
             usercart=new Map().set(courseId,goods)
             this.setState({
                 goodsList:usercart
             })
-            this.props.dispatch(setCarts(usercart))
+            this.props.setCarts(usercart)
 
         }
         this.calculatePrice(usercart)
@@ -61,7 +61,7 @@ class Series extends Component {
         let goodslist=goodsList;
         let totalprice=0;
         if(goodslist.size===0){
-            this.props.dispatch(totalPrice(0))
+            this.calTotalPrice(0)
         }else if(goodslist.size===1){
             goodslist.forEach(function(value, key, map) {
                 totalprice=Calculation("add",totalprice,Number(value.oriprice))
@@ -71,7 +71,7 @@ class Series extends Component {
                 totalprice=Calculation("add",totalprice,Number(value.price))
             });
         }
-        this.props.dispatch(totalPrice(totalprice))
+          this.props.calTotalPrice(totalprice)
     }
     hrefTo(id,e){
         if(e.target&&e.target.matches('input')){

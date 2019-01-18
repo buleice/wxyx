@@ -2,6 +2,7 @@ let needAddress=0;
 const axios =require('axios');
 const Config =require('./url-config')
 axios.defaults.withCredentials=true;
+let payData={};
 const jsSdkConfig = function (shareData) {
     let WXSHDATA = {
         title: shareData.FshareTitle,
@@ -75,8 +76,8 @@ const jsSdkConfig = function (shareData) {
         console.log('errors', errors);
     });
 };
-const wxPay=function (url,data) {
-    axios({
+const wxPay=async function (url,data) {
+   let params =await axios({
         url: url,
         method: 'post',
         data:data,
@@ -90,15 +91,13 @@ const wxPay=function (url,data) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
-    }).then(response=>{
-        if(response.status===200){
-             jsSDK(response.data.data);
-            needAddress=response.data.needAddress;
-        }
-    }).catch(function (errors) {
-        console.log('errors', errors);
-    });
-
+    }).catch(function (err) {
+       console.log(err);
+   });
+   if(params.status===200){
+       payData=params.data;
+    jsSDK(params.data.data);
+   }
 }
 
 const jsSDK = function(params) {
@@ -119,10 +118,10 @@ const onBridgeReady=function (params) {
         'getBrandWCPayRequest', params,
         function(res) {
             if (res.err_msg === "get_brand_wcpay_request:ok") {
-                if(needAddress===0){
+                if(payData.needAddress===0){
                     window.location.reload()
                 }else{
-                    setTimeout(()=>{window.location.href=`/address/index?#/orderpage?id=${_GetQueryString('id')}`},300)
+                    setTimeout(()=>{window.location.href=`/address/index?#/orderpage?id=${payData.bid}`},300)
                 }
             } else {
                 alert("支付失败");
