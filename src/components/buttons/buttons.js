@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {ROOT} from '../common/js/url-config';
 import './buttons.css'
 import '../common/css/weui.min.css'
 import inventory from '../../asserts/inventory.png'
-import {wxPay} from '../common/js/jsSdk'
+import {newWxPay} from '../common/js/newWxpay'
 
 export default class FooterButtons extends Component {
     constructor(props) {
@@ -13,15 +12,25 @@ export default class FooterButtons extends Component {
             isalert: false,
             alertContent: "您好!您还没有选中商品,不能支付的哦!",
             canUseCouon:props.buyingInfo.canUseCouon,
-            canclick:true
+            canclick:true,
+            goToclass:true
         }
         this.hideAlert = this.hideAlert.bind(this)
     }
+    afterPay(params) {
+    setTimeout(() => {
+        if (params.needAddress === 1) {
+            window.location.href = `/address/index?from=series#/orderpage?id=${params.bid}&goodsid=${this._GetQueryString('id')}`
+        } else {
+            window.location.reload()
+        }
+    }, 300)
+}
     render() {
         let orderExpress_id=1;
         return (
             <div>
-                {this.props.allBuy===0?
+                {this.props.allBuy===0&&this.state.goToclass?
                 (
                 <ul className="buttons">
                     <li onClick={this.props.changeStatus}>
@@ -70,7 +79,17 @@ export default class FooterButtons extends Component {
                     this.props.setCouponBuyFilter(this.props.totalPrice)
                     return
                 }
-                wxPay(`${ROOT}/pay/weixin/series/prepare.json`, Object.assign({},{goodsids:[...this.props.carts.keys()]},this.props.buyingInfo));
+                newWxPay.seriesPay('/pay/weixin/series/prepare.json',Object.assign({},{goodsids:[...this.props.carts.keys()]},this.props.buyingInfo)).then(res=>{
+                  this.setDate({
+                    goToclass:true
+                  })
+                  console.log("ok2")
+                  this.afterPay(res)
+                }).catch(err=>{
+                console.log("fail2")
+                  window.location.reload();
+                   // window.alert("支付失败")
+                })
             }else{
                 this.setState({
                     isalert:true

@@ -3,10 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="faa4b0ca-7c06-41bb-b17e-21a1db83554c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/buttons/buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/buttons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/js/jsSdk.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/js/jsSdk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/js/wxpay.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/js/axiosData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/js/axiosData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/couponBuy/couponBuy.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/couponBuy/couponBuy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/series/series.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/series/series.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -86,16 +91,16 @@
     <session id="428186221">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="23" />
-          <entry key="project.open.time.0" value="14" />
-          <entry key="project.open.time.1" value="5" />
-          <entry key="project.open.time.2" value="1" />
+          <entry key="project.closed" value="26" />
+          <entry key="project.open.time.0" value="15" />
+          <entry key="project.open.time.1" value="6" />
+          <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.opened" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -143,8 +148,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/buttons/buttons.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1078">
-              <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
+            <state relative-caret-position="1188">
+              <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -155,8 +160,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1848">
-              <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+            <state relative-caret-position="1628">
+              <caret line="86" column="20" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="20" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -310,6 +315,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -354,7 +360,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -447,6 +452,9 @@
       <workItem from="1547801960730" duration="23000" />
       <workItem from="1547801992806" duration="12000" />
       <workItem from="1547802028229" duration="7000" />
+      <workItem from="1548141181639" duration="19000" />
+      <workItem from="1548396380206" duration="24000" />
+      <workItem from="1548669956647" duration="78000" />
     </task>
     <task id="LOCAL-00001" summary="'优化功能'">
       <created>1543921882421</created>
@@ -487,7 +495,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="236124000" />
+    <option name="totallyTimeSpent" value="236245000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-32768" width="136" height="1100" extended-state="0" />
@@ -833,8 +841,8 @@
     <entry file="file://$PROJECT_DIR$/src/components/common/js/wxpay.js" />
     <entry file="file://$PROJECT_DIR$/src/components/buttons/buttons.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1078">
-          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
+        <state relative-caret-position="1188">
+          <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -843,8 +851,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1848">
-          <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+        <state relative-caret-position="1628">
+          <caret line="86" column="20" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="20" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

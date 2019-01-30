@@ -4,7 +4,6 @@ import timeIcon from '../../asserts/课时(1).png';
 import peopleIcon from '../../asserts/人物拷贝.png';
 import catalogueIcon from '../../asserts/目录.png'
 import styles from './series.css'
-import {setCarts,totalPrice} from "../../actions";
 import {Calculation} from '../common/js/process'
 
 class Series extends Component {
@@ -13,6 +12,22 @@ class Series extends Component {
         this.state={
             goodsList:new Map()
         }
+    }
+    calculatePrice(goodsList){
+        let goodslist=goodsList;
+        let totalprice=0;
+        if(goodslist.size===0){
+            this.props.calTotalPrice(0)
+        }else if(goodslist.size===1){
+            goodslist.forEach(function(value, key, map) {
+                totalprice=Calculation("add",totalprice,Number(value.oriprice))
+            });
+        }else{
+            goodslist.forEach(function(value, key, map) {
+                totalprice=Calculation("add",totalprice,Number(value.price))
+            });
+        }
+          this.props.calTotalPrice(totalprice)
     }
     componentDidMount(){
         let tempMap=new Map();
@@ -29,8 +44,6 @@ class Series extends Component {
         this.calculatePrice(tempMap)
     }
     handleCart(courseId,goods,e){
-        // e.nativeEvent.stopImmediatePropagation();
-        // e.stopPropagation();
         let usercart=this.state.goodsList;
         if(usercart.size>0){
             if(usercart.has(courseId)){
@@ -57,22 +70,6 @@ class Series extends Component {
         this.calculatePrice(usercart)
     }
 
-    calculatePrice(goodsList){
-        let goodslist=goodsList;
-        let totalprice=0;
-        if(goodslist.size===0){
-            this.calTotalPrice(0)
-        }else if(goodslist.size===1){
-            goodslist.forEach(function(value, key, map) {
-                totalprice=Calculation("add",totalprice,Number(value.oriprice))
-            });
-        }else{
-            goodslist.forEach(function(value, key, map) {
-                totalprice=Calculation("add",totalprice,Number(value.price))
-            });
-        }
-          this.props.calTotalPrice(totalprice)
-    }
     hrefTo(id,e){
         if(e.target&&e.target.matches('input')){
             return;

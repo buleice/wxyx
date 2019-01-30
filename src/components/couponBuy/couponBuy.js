@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import './couponBuy.scss'
-import {wxPay} from "../common/js/jsSdk";
-import {ROOT} from "../common/js/url-config";
+import {newWxPay} from '../common/js/newWxpay'
 
 export default class CouponBuy extends Component{
    constructor(props){
@@ -11,6 +10,21 @@ export default class CouponBuy extends Component{
            canclick:true
        }
    }
+   _GetQueryString(name) {
+       var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+       var r = window.location.search.substr(1).match(reg); //search,查询？后面的参数，并匹配正则
+       if (r != null) return unescape(r[2]);
+       return '';
+   }
+   afterPay(params) {
+   setTimeout(() => {
+       if (params.needAddress === 1) {
+           window.location.href = `/address/index?from=series#/orderpage?id=${params.bid}&goodsid=${this._GetQueryString('id')}`
+       } else {
+           window.location.reload()
+       }
+   }, 300)
+}
     payByclickCoupon(id) {
         this.pullUpToPay(id);
     }
@@ -28,7 +42,14 @@ export default class CouponBuy extends Component{
                    canclick:true
                })
            },2000)
-           wxPay(`/pay/weixin/series/prepare.json`, Object.assign({},{goodsids:[...this.props.carts.keys()],couponid:couponid},this.props.buyingInfo));
+           newWxPay.seriesPay('/pay/weixin/series/prepare.json',Object.assign({},{goodsids:[...this.props.carts.keys()],couponid:couponid},this.props.buyingInfo)).then(res=>{
+               console.log("ok2")
+             this.afterPay(res)
+           }).catch(err=>{
+             console.log("fail2")
+             window.location.reload();
+              // window.alert("支付失败")
+           })
        }else{
            return
        }

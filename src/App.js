@@ -42,9 +42,12 @@ class App extends Component {
     this._initPageData()
     }
     componentDidMount(){
-        window.addEventListener('popstate', function () {
-            this._initPageData()
-        }, false);
+      let _this=this;
+      window.addEventListener('pageshow', function(event) {
+          if (event.persisted) {
+            _this._initPageData();
+          }
+      })
     }
     render() {
         if(this.state.loading){
@@ -57,7 +60,6 @@ class App extends Component {
                     <CouponBuy buyingInfo={this.state.buyingInfo}></CouponBuy>
                     <FooterButtons allBuy={this.state.allBuy} buyingInfo={this.state.buyingInfo}/>
                     <ScroolYToTop/>
-                    <AdPush couponSent={this.state.couponSent}></AdPush>
                 </div>
             );
         }else{
